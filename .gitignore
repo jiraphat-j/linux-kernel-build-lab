@@ -31,7 +31,8 @@ __pycache__/
 # Extracted Kernel Source Tree (Can exceed 20GB!)
 linux-*/
 linux/
-build/
+/build/
+!evidence/build/
 vmlinux
 vmlinuz*
 System.map*
@@ -51,3 +52,9 @@ Thumbs.db
 .idea/
 *.swp
 *~
+
+# Assignment and Reference PDFs (Local only)
+/Linux_Kernel_Developing_Introduction.pdf
+/Mini-Project 1 Workflow- Build and Install Ubuntu Kernel.pdf
+/MiniProject1_2026.pdf
+/Mini_Project.pdf

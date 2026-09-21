@@ -1,0 +1,17 @@
+vboxuser@Ubuntu:~$ ls -lh /boot
+total 137M
+-rw------- 1 root root  11M Jul 31 16:27 System.map-7.0.0-30-generic
+-rw------- 1 root root  11M Aug  1 02:09 System.map-7.0.0-31-generic
+-rw-r--r-- 1 root root 302K Jul 31 16:27 config-7.0.0-30-generic
+-rw-r--r-- 1 root root 302K Aug  1 02:09 config-7.0.0-31-generic
+drwxr-xr-x 5 root root 4.0K Sep 15 05:53 grub
+lrwxrwxrwx 1 root root   27 Sep 15 05:44 initrd.img -> initrd.img-7.0.0-31-generic
+-rw------- 1 root root  41M Sep 15 05:46 initrd.img-7.0.0-30-generic
+-rw------- 1 root root  41M Sep 15 05:53 initrd.img-7.0.0-31-generic
+lrwxrwxrwx 1 root root   27 Sep 15 05:46 initrd.img.old -> initrd.img-7.0.0-30-generic
+-rw-r--r-- 1 root root 153K Nov 29  2025 memtest86+ia32
+-rw-r--r-- 1 root root 150K Nov 29  2025 memtest86+x64
+lrwxrwxrwx 1 root root   24 Sep 15 05:44 vmlinuz -> vmlinuz-7.0.0-31-generic
+-rw------- 1 root root  17M Jul 31 16:27 vmlinuz-7.0.0-30-generic
+-rw------- 1 root root  17M Aug  1 02:01 vmlinuz-7.0.0-31-generic
+lrwxrwxrwx 1 root root   24 Sep 15 05:45 vmlinuz.old -> vmlinuz-7.0.0-30-generic
