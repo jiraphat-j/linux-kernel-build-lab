@@ -1,5 +1,0 @@
-vboxuser@Ubuntu:~/kernel-build/linux-7.0.0$ ls -lh /boot | grep cpe-os-v1
--rw-r--r-- 1 root root  10M Sep 20 13:56 System.map-7.0.14-cpe-os-v1
--rw-r--r-- 1 root root 302K Sep 20 13:56 config-7.0.14-cpe-os-v1
--rw------- 1 root root  34M Sep 20 15:33 initrd.img-7.0.14-cpe-os-v1
--rw-r--r-- 1 root root  15M Sep 20 13:56 vmlinuz-7.0.14-cpe-os-v1

@@ -1,4 +1,0 @@
-vboxuser@Ubuntu:~/kernel-build/linux-7.0.0$ uname -r
-7.0.14-cpe-os-v1
-vboxuser@Ubuntu:~/kernel-build/linux-7.0.0$ uname -a
-Linux Ubuntu 7.0.14-cpe-os-v1 #11 SMP PREEMPT_DYNAMIC Sun Sep 20 14:04:33 UTC 2026 x86_64 GNU/Linux
