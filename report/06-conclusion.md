@@ -1,14 +1,14 @@
-# 06 - Conclusion
+# 06 - บทสรุป (Conclusion)
 
-## 1. Project Summary
-Our group successfully achieved the project's Definition of Done by compiling and installing a custom Ubuntu kernel within a Linux VM. The virtual machine boots normally into the new kernel. This success is verified by our before-and-after baseline comparisons, which include updated system outputs for `uname -a` and `uname -r`, new file additions in the `/boot` directory, and the custom kernel's presence in the GRUB menu.
+## 1. สรุปผลการดำเนินงาน (Project Summary)
+กลุ่มของเราประสบความสำเร็จตามบรรทัดฐานความสำเร็จของโปรเจกต์ (Definition of Done) โดยสามารถคอมไพล์และติดตั้ง Ubuntu เคอร์เนลที่ปรับแต่งเองภายใน Linux VM ได้สำเร็จ และ Virtual Machine สามารถบูตเข้าสู่เคอร์เนลใหม่ได้อย่างเป็นปกติ ความสำเร็จนี้ได้รับการยืนยันจากการเปรียบเทียบข้อมูลฐาน (baseline) ทั้งก่อนและหลังทำ ซึ่งครอบคลุมไปถึงผลลัพธ์ของคำสั่ง `uname -a` และ `uname -r` ที่อัปเดตเป็นเวอร์ชันใหม่, การเพิ่มขึ้นของไฟล์ใหม่ในไดเรกทอรี `/boot`, และการแสดงชื่อของเคอร์เนลที่ปรับแต่งเองในหน้าเมนู GRUB
 
-## 2. Troubleshooting Overview
-Throughout the build process, we encountered and resolved several issues, such as a "Disk quota exceeded" error during the kernel package compression due to massive debug symbols, and an Out of Memory (OOM) risk caused by insufficient RAM during the multi-core build phase. We successfully identified the root causes and documented reproducible fixes, such as disabling specific debug configurations (e.g., `DEBUG_INFO`) and creating a 4GB swapfile. A complete record of all errors, causes, and solutions is available in our `logs/troubleshooting-log.md` file.
+## 2. สรุปปัญหาและการแก้ไข (Troubleshooting Overview)
+ตลอดกระบวนการบิลด์ เราได้พบและแก้ไขปัญหาหลายประการ เช่น ข้อผิดพลาด "Disk quota exceeded" ระหว่างการบีบอัดเคอร์เนลแพ็กเกจ ซึ่งมีสาเหตุมาจาก Debug Symbols ที่มีขนาดใหญ่มาก รวมถึงความเสี่ยงต่อปัญหาหน่วยความจำไม่เพียงพอ (Out of Memory - OOM) จาก RAM ที่ไม่พอในระหว่างช่วงการบิลด์แบบ Multi-core เราประสบความสำเร็จในการค้นหาสาเหตุที่แท้จริงและบันทึกวิธีการแก้ไขที่สามารถทำซ้ำได้ เช่น การปิดการตั้งค่า Debug บางอย่าง (เช่น `DEBUG_INFO`) และการสร้าง Swapfile ขนาด 4GB โดยสามารถดูบันทึกที่ครบถ้วนเกี่ยวกับข้อผิดพลาด สาเหตุ และวิธีแก้ไขทั้งหมดได้ในไฟล์ `logs/troubleshooting-log.md` ของเรา
 
-## 3. Lessons Learned
-This project expanded our technical understanding of operating systems and provided practical insights into cybersecurity:
+## 3. บทเรียนที่ได้รับ (Lessons Learned)
+โปรเจกต์นี้ช่วยขยายความเข้าใจทางเทคนิคของเราเกี่ยวกับระบบปฏิบัติการ และมอบมุมมองเชิงปฏิบัติในด้านความมั่นคงปลอดภัยไซเบอร์ (Cybersecurity):
 
-*   **OS & Build Environment:** We gained hands-on experience preparing a Linux build environment, modifying kernel source files, and installing compiled `.deb` packages.
-*   **Blue Team & DFIR Perspective:** We learned how a system's kernel version changes and what specific artifacts—such as `/boot` contents, GRUB configurations, and package histories—are essential for investigating potential kernel tampering. We now understand how to use before/after comparisons to detect system anomalies.
-*   **Red Team Awareness:** We understand why advanced attackers target levels below user-space (like the kernel, modules, or boot chain). Altering the kernel can obscure the visibility of security tools, which highlights a critical attack surface that defenders must be prepared to monitor.
+*   **ระบบปฏิบัติการและสภาพแวดล้อมการบิลด์ (OS & Build Environment):** เราได้รับประสบการณ์ตรงในการเตรียมสภาพแวดล้อมสำหรับการบิลด์บนลินุกซ์, การแก้ไขซอร์สไฟล์ของเคอร์เนล, และการติดตั้งแพ็กเกจ `.deb` ที่ผ่านการคอมไพล์แล้ว
+*   **มุมมองด้าน Blue Team และ DFIR:** เราได้เรียนรู้ว่าเวอร์ชันของเคอร์เนลในระบบเปลี่ยนแปลงไปอย่างไร และมี Artifact ใดบ้างที่สำคัญ — เช่น ข้อมูลใน `/boot`, การตั้งค่า GRUB, และประวัติแพ็กเกจ — ซึ่งเป็นสิ่งจำเป็นสำหรับการตรวจสอบการแก้ไขดัดแปลงเคอร์เนลที่อาจเกิดขึ้น ตอนนี้เราเข้าใจถึงวิธีการเปรียบเทียบสถานะก่อนและหลัง เพื่อตรวจจับความผิดปกติของระบบแล้ว
+*   **ความตระหนักรู้ด้าน Red Team:** เราเข้าใจแล้วว่าเหตุใดผู้โจมตีระดับสูงจึงมุ่งเป้าไปที่ระดับที่ต่ำกว่า user-space (เช่น เคอร์เนล, โมดูล, หรือ boot chain) การแก้ไขดัดแปลงเคอร์เนลสามารถบดบังการมองเห็น (visibility) ของเครื่องมือรักษาความปลอดภัยได้ ซึ่งตอกย้ำให้เห็นถึงจุดโจมตีที่สำคัญที่ฝั่งป้องกัน (defenders) จำเป็นต้องเตรียมพร้อมรับมือและเฝ้าระวัง

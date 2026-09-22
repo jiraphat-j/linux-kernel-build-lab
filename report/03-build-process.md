@@ -1,22 +1,22 @@
-# 03 - Step-by-Step Build Process
+# 03 - ขั้นตอนการบิลด์เคอร์เนล (Step-by-Step Build Process)
 
-## 3.1 Preparing the Build Environment
-*   We began by enabling the source repositories according to the Ubuntu kernel documentation (adding `deb-src` to `/etc/apt/sources.list.d/ubuntu.sources`).
-*   We installed all necessary dependencies required for building the kernel, utilizing `apt install` for build essentials and `apt-get build-dep linux` for kernel-specific prerequisites.
-*   Before downloading the source, we verified that there was sufficient disk space available in the VM and configured a 4.0 GiB swapfile to prevent Out of Memory (OOM) errors during compilation.
-*   Evidence such as disk usage before the build and outputs from dependency installations are stored in the `evidence/build/` and `evidence/before/` directories.
+## 3.1 การเตรียมสภาพแวดล้อมสำหรับการบิลด์ (Preparing the Build Environment)
+*   เราเริ่มต้นด้วยการเปิดใช้งาน source repositories ตามคู่มือของ Ubuntu kernel (โดยเพิ่ม `deb-src` ลงในไฟล์ `/etc/apt/sources.list.d/ubuntu.sources`)
+*   เราทำการติดตั้ง dependencies ทั้งหมดที่จำเป็นสำหรับการบิลด์เคอร์เนล โดยใช้คำสั่ง `apt install` สำหรับเครื่องมือ build essentials พื้นฐาน และ `apt-get build-dep linux` สำหรับแพ็กเกจที่จำเป็นเฉพาะของเคอร์เนล
+*   ก่อนที่จะดาวน์โหลดซอร์สโค้ด เราได้ตรวจสอบเพื่อให้แน่ใจว่า VM มีพื้นที่ว่างบนดิสก์เพียงพอ และได้ทำการตั้งค่า Swapfile ขนาด 4.0 GiB เพื่อป้องกันปัญหาหน่วยความจำไม่เพียงพอ (Out of Memory - OOM) ระหว่างการคอมไพล์
+*   หลักฐานต่างๆ เช่น การใช้งานดิสก์ก่อนการบิลด์ และผลลัพธ์จากการติดตั้ง dependency ได้ถูกบันทึกและจัดเก็บไว้ในไดเรกทอรี `evidence/build/` และ `evidence/before/`
 
-## 3.2 Getting the Kernel Source
-*   We downloaded the kernel source package corresponding to our current Ubuntu version using the `apt source linux` command and verified it could be fetched successfully.
-*   After navigating into the source directory, we cleaned and prepared the build environment.
-*   Crucially, we modified the ABI/version number by adding a custom suffix (`-cpe-os-v1`) into the `localversion` file.
-*   This version change ensures our custom kernel is easily distinguishable from standard Canonical kernels.
-*   To optimize the build time and disk usage, we disabled heavy debug symbols (such as `DEBUG_INFO`) using the `scripts/config` utility and applied defaults with `make olddefconfig`.
-*   We captured evidence showing the source directory configuration was ready for the build process (e.g., using `pwd`, `ls -la`, and `uname -r`).
+## 3.2 การดาวน์โหลดซอร์สโค้ดของเคอร์เนล (Getting the Kernel Source)
+*   เราดาวน์โหลดซอร์สแพ็กเกจของเคอร์เนลที่ตรงกับเวอร์ชัน Ubuntu ปัจจุบันของเราโดยใช้คำสั่ง `apt source linux` และตรวจสอบว่าสามารถดึงข้อมูลมาได้สำเร็จ
+*   หลังจากเข้าไปที่ไดเรกทอรีของซอร์สโค้ด เราได้ทำการทำความสะอาด (clean) และเตรียมสภาพแวดล้อมสำหรับการบิลด์ให้พร้อม
+*   ขั้นตอนสำคัญคือ เราได้แก้ไขหมายเลขเวอร์ชัน/ABI โดยการเพิ่ม Suffix แบบกำหนดเอง (`-cpe-os-v1`) ลงในไฟล์ `localversion`
+*   การเปลี่ยนเวอร์ชันนี้ช่วยให้มั่นใจได้ว่าเคอร์เนลที่เราปรับแต่งเองจะสามารถแยกแยะความแตกต่างจากเคอร์เนลมาตรฐานของ Canonical ได้อย่างชัดเจน
+*   เพื่อเพิ่มประสิทธิภาพด้านเวลาในการบิลด์และลดการใช้พื้นที่ดิสก์ เราได้ปิดการใช้งาน Debug Symbols ขนาดใหญ่ (เช่น `DEBUG_INFO`) ผ่านสคริปต์ `scripts/config` และตั้งค่าเริ่มต้นด้วยคำสั่ง `make olddefconfig`
+*   เราได้บันทึกหลักฐานที่แสดงว่าโฟลเดอร์ซอร์สโค้ดพร้อมสำหรับกระบวนการบิลด์แล้ว (เช่น การใช้คำสั่ง `pwd`, `ls -la` และ `uname -r`)
 
-## 3.3 Building the Kernel
-*   We ensured a clean configuration state immediately prior to starting the build.
-*   The kernel package build process was initiated using the `make -j4 bindeb-pkg` command to utilize multiple CPU cores and allowed to run until completion.
-*   We verified that the build was successful by checking for the newly generated `.deb` packages (`linux-image`, `linux-headers`, and `linux-libc-dev`) using the `ls -lh *.deb` command.
-*   The complete list of commands used during this phase is documented in `commands/build-commands.md`.
-*   Build logs and screenshots of the generated `.deb` packages are saved in `logs/build-log.md` and the `evidence/build/` folder.
+## 3.3 การบิลด์เคอร์เนล (Building the Kernel)
+*   เราตรวจสอบให้แน่ใจว่าสถานะคอนฟิกูเรชัน (configuration state) สะอาดและพร้อมสมบูรณ์ ก่อนที่จะเริ่มกระบวนการบิลด์
+*   กระบวนการบิลด์เคอร์เนลแพ็กเกจเริ่มต้นขึ้นโดยใช้คำสั่ง `make -j4 bindeb-pkg` เพื่อดึงประสิทธิภาพจาก CPU หลายคอร์มาใช้งาน และปล่อยให้ทำงานจนกว่าจะเสร็จสมบูรณ์
+*   เราตรวจสอบความสำเร็จของการบิลด์โดยค้นหาไฟล์แพ็กเกจ `.deb` ที่ถูกสร้างขึ้นมาใหม่ (`linux-image`, `linux-headers` และ `linux-libc-dev`) ด้วยคำสั่ง `ls -lh *.deb`
+*   รายการคำสั่งทั้งหมดที่ใช้ในขั้นตอนนี้ได้ถูกบันทึกไว้ในเอกสาร `commands/build-commands.md`
+*   บันทึกการบิลด์ (Build logs) และภาพหน้าจอของแพ็กเกจ `.deb` ที่ได้ ถูกจัดเก็บไว้ใน `logs/build-log.md` และโฟลเดอร์ `evidence/build/`
