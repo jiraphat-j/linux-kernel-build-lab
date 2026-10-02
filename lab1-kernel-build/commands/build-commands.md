@@ -66,6 +66,10 @@ scripts/config --disable DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
 scripts/config --disable DEBUG_INFO_BTF
 scripts/config --enable DEBUG_INFO_NONE
 
+# Remove Canonical build-time certificates (fixes 'No rule to make target debian/canonical-certs.pem')
+scripts/config --set-str SYSTEM_TRUSTED_KEYS ""
+scripts/config --set-str SYSTEM_REVOCATION_KEYS ""
+
 # Apply default config choices
 make olddefconfig
 ```
