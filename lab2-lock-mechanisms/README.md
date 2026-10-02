@@ -1,24 +1,5 @@
 # Problem Session 08: Lock Mechanisms
 
-การศึกษา วิเคราะห์ และนำเสนอ Lock Mechanisms นอกเหนือจากในบทเรียน (3-6 สไลด์ต่อ Algorithm)  
-ส่งสไลด์นำเสนอ (PDF) และลิงก์คลิปวิดีโอผ่าน LEB2
-
----
-
-## ตารางแบ่งหน้าที่สมาชิกกลุ่ม (8 คน)
-
-| ลำดับ | สมาชิก | หน้าที่ / หัวข้อ | ไฟล์ที่รับผิดชอบ |
-| :--- | :--- | :--- | :--- |
-| **คน 1** | (ระบุชื่อ) | Peterson's Algorithm: หลักการ + Pseudocode + ตัวอย่างการทำงาน | `01-peterson/pseudo.md`, `01-peterson/concept.md` |
-| **คน 2** | (ระบุชื่อ) | Peterson's Algorithm: วิเคราะห์ Correctness + Performance | `01-peterson/concept.md`, `01-peterson/code/` |
-| **คน 3** | บีม | Load-Linked / Store-Conditional: หลักการ + Pseudocode + ตัวอย่าง | `02-ll-sc/pseudo.md`, `02-ll-sc/concept.md` |
-| **คน 4** | เฟิส | Load-Linked / Store-Conditional: วิเคราะห์ Correctness + Performance | `02-ll-sc/concept.md`, `02-ll-sc/code/` |
-| **คน 5** | ฟิม | Dekker's Algorithm: หลักการ + Pseudocode + ตัวอย่าง | `03-dekker/pseudo.md`, `03-dekker/concept.md` |
-| **คน 6** | โบ | Dekker's Algorithm: วิเคราะห์ Correctness + Performance | `03-dekker/concept.md`, `03-dekker/code/` |
-| **คน 7** | เฟียต | Comparison: รวบรวมข้อมูลทั้ง 3 algorithms และทำตารางเปรียบเทียบ | `comparison/comparison.md` |
-| **คน 8** | โดนัท | รวมงาน: รวบรวมเนื้อหา, จัด PowerPoint (3-6 หน้า/Algo), ตรวจสอบเกณฑ์ | สไลด์รวม PDF + Video link |
-
----
 
 ## โครงสร้างโฟลเดอร์
 
