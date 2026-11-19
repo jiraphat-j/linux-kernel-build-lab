@@ -1,0 +1,36 @@
+workload: sleep-loop  pid: 17693  duration: 5s  cpus: 4  kernel: 7.0.0-31-generic
+switch_in:  49
+switch_out: 49
+wakeups:    49
+migrations: 10
+--- sample lines ---
+          <idle>-0       [003] dNh4. 10555.891309: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=003
+          <idle>-0       [003] d..2. 10555.891406: sched_switch: prev_comm=swapper/3 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [003] d..2. 10555.891437: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/3 next_pid=0 next_prio=120
+          <idle>-0       [003] d.h3. 10555.998414: sched_migrate_task: comm=python3 pid=17693 prio=120 orig_cpu=3 dest_cpu=0
+          <idle>-0       [000] dNh2. 10555.998604: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=000
+          <idle>-0       [000] d..2. 10555.998658: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [000] d..2. 10555.998684: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4. 10556.100182: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=000
+          <idle>-0       [000] d..2. 10556.100276: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [000] d..2. 10556.100302: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4. 10556.203254: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=000
+          <idle>-0       [000] d..2. 10556.203388: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [000] d..2. 10556.203415: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4. 10556.304402: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=000
+          <idle>-0       [000] d..2. 10556.304496: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [000] d..2. 10556.304524: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4. 10556.406422: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=000
+          <idle>-0       [000] d..2. 10556.406555: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [000] d..2. 10556.406575: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4. 10556.510374: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=000
+          <idle>-0       [000] d..2. 10556.510469: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [000] d..2. 10556.510499: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4. 10556.611789: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=000
+          <idle>-0       [000] d..2. 10556.611821: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [000] d..2. 10556.611845: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh3. 10556.712067: sched_migrate_task: comm=python3 pid=17693 prio=120 orig_cpu=0 dest_cpu=1
+          <idle>-0       [001] dNh2. 10556.712251: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=001
+          <idle>-0       [001] d..2. 10556.712289: sched_switch: prev_comm=swapper/1 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=17693 next_prio=120
+         python3-17693   [001] d..2. 10556.712312: sched_switch: prev_comm=python3 prev_pid=17693 prev_prio=120 prev_state=S ==> next_comm=swapper/1 next_pid=0 next_prio=120
+          <idle>-0       [001] dNh4. 10556.816633: sched_wakeup: comm=python3 pid=17693 prio=120 target_cpu=001

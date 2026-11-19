@@ -1,0 +1,36 @@
+workload: cpu-bound  pid: 17675  duration: 5s  cpus: 4  kernel: 7.0.0-31-generic
+switch_in:  58
+switch_out: 58
+wakeups:    0
+migrations: 0
+--- sample lines ---
+             yes-17675   [001] d..2. 10550.313185: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=rcu_preempt next_pid=15 next_prio=120
+     rcu_preempt-15      [001] d..2. 10550.313196: sched_switch: prev_comm=rcu_preempt prev_pid=15 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.327406: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=rcu_preempt next_pid=15 next_prio=120
+     rcu_preempt-15      [001] d..2. 10550.327428: sched_switch: prev_comm=rcu_preempt prev_pid=15 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.340257: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     rcu_preempt-15      [001] d..2. 10550.340301: sched_switch: prev_comm=rcu_preempt prev_pid=15 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.525578: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10550.525587: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.659649: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10550.659805: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.721298: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10550.721309: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.783151: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10550.783167: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.976692: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10550.977339: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10550.985143: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R+ ==> next_comm=ksoftirqd/1 next_pid=25 next_prio=120
+     ksoftirqd/1-25      [001] d..2. 10550.985149: sched_switch: prev_comm=ksoftirqd/1 prev_pid=25 prev_prio=120 prev_state=S ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10551.230370: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10551.230378: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10551.293146: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10551.293152: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10551.556388: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10551.556399: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10551.613614: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10551.613622: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10551.679946: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10551.680100: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
+             yes-17675   [001] d..2. 10551.741765: sched_switch: prev_comm=yes prev_pid=17675 prev_prio=120 prev_state=R ==> next_comm=kworker/1:1 next_pid=11382 next_prio=120
+     kworker/1:1-11382   [001] d..2. 10551.741776: sched_switch: prev_comm=kworker/1:1 prev_pid=11382 prev_prio=120 prev_state=I ==> next_comm=yes next_pid=17675 next_prio=120
