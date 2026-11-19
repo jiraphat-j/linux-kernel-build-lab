@@ -7,6 +7,7 @@
  * (event เดียวกันจะไม่มี prev == next เพราะ scheduler ไม่ switch ถ้าเป็น task เดิม)
  */
 #include <linux/sched.h>
+#include <linux/mm_types.h>	/* struct folio: กัน warning จาก sched/numa_balancing.h */
 #include <trace/events/sched.h>
 #include "sp_internal.h"
 
