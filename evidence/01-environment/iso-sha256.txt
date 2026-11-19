@@ -1,0 +1,5 @@
+ไฟล์: ubuntu-26.04-desktop-amd64.iso
+ที่อยู่: C:\Users\aphiwat\Downloads
+แก้ไขล่าสุด: 2026-08-18
+Algorithm: SHA256
+sha256: 487F87FAAF547EA30E0ABA4D5B53346292571256B25333A978DB1692BCEE9DD2
