@@ -1,0 +1,32 @@
+make -C /lib/modules/7.0.0-31-generic/build M=/home/user/Documents/mini2 modules
+make[1]: Entering directory '/usr/src/linux-headers-7.0.0-31-generic'
+make[2]: Entering directory '/home/user/Documents/mini2'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+  You are using:           gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+warning: pahole version differs from the one used to build the kernel
+  The kernel was built with: 131
+  You are using:             0
+  CC [M]  main.o
+  CC [M]  tracepoints.o
+  CC [M]  procfs.o
+  LD [M]  sched_profiler.o
+  MODPOST Module.symvers
+  CC [M]  sched_profiler.mod.o
+  CC [M]  .module-common.o
+  LD [M]  sched_profiler.ko
+  BTF [M] sched_profiler.ko
+Skipping BTF generation for sched_profiler.ko due to unavailability of vmlinux
+make[2]: Leaving directory '/home/user/Documents/mini2'
+make[1]: Leaving directory '/usr/src/linux-headers-7.0.0-31-generic'
+15470
+pid:        15470
+switch_in:  10
+switch_out: 9
+wakeups:    5
+migrations: 2
+[ 8057.194336] audit: type=1400 audit(1795089445.194:382): apparmor="DENIED" operation="open" class="file" profile="snap.firefox.firefox" name="/etc/vulkan/implicit_layer.d/" pid=14194 comm="CanvasRenderer" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
+[ 8234.505745] kauditd_printk_skb: 4 callbacks suppressed
+[ 8234.505751] audit: type=1400 audit(1795089622.486:387): apparmor="DENIED" operation="open" class="file" profile="snap.firmware-updater.firmware-notifier" name="/proc/sys/vm/max_map_count" pid=15908 comm="firmware-notifi" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
+[ 9254.164410] sched_profiler: loaded
+[ 9254.210479] sched_profiler: unloaded

@@ -1,0 +1,16 @@
+== uname ==
+Linux Ubuntu 7.0.0-31-generic #31-Ubuntu SMP PREEMPT_DYNAMIC Sat Aug  1 04:26:38 UTC 2026 x86_64 GNU/Linux
+== gcc ==
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+== os ==
+Distributor ID:	Ubuntu
+Description:	Ubuntu 26.04 LTS
+Release:	26.04
+Codename:	resolute
+== cpu ==
+4
+== tracepoints ==
+sched_migrate_task
+sched_switch
+sched_wakeup
+sched_wakeup_new
