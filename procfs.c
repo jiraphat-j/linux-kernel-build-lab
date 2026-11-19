@@ -36,6 +36,10 @@ static ssize_t sp_write(struct file *file, const char __user *buf,
 	ret = kstrtoint_from_user(buf, count, 10, &pid);
 	if (ret)
 		return ret;
+	if (pid == 0) {
+		sp_stop();
+		return count;
+	}
 	ret = sp_start(pid);
 	if (ret)
 		return ret;

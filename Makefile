@@ -1,3 +1,5 @@
+PWD := $(CURDIR)
+
 obj-m += sched_profiler.o
 sched_profiler-y := main.o tracepoints.o procfs.o
 

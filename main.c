@@ -21,4 +21,5 @@ static void __exit sp_exit(void)
 module_init(sp_init);
 module_exit(sp_exit);
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("CPE333 Mini-project 2 group");
 MODULE_DESCRIPTION("Process scheduler profiler");
