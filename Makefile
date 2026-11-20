@@ -1,7 +1,7 @@
 PWD := $(CURDIR)
 
 obj-m += sched_profiler.o
-sched_profiler-y := main.o tracepoints.o procfs.o
+sched_profiler-y := main.o tracepoints.o procfs.o probe_switch.o
 
 KDIR ?= /lib/modules/$(shell uname -r)/build
 
