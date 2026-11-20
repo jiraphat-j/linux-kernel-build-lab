@@ -39,3 +39,19 @@ echo "PID=$PID   /proc delta = $((a-b))"
 cat /proc/sched_profiler
 
 รันด้วย: sudo insmod sched_profiler.ko && sudo bash check_switch.sh && sudo rmmod sched_profiler
+
+== ทดสอบความทนทาน robustness_test.sh (robustness-test-result.png) ==
+ตามที่ reviewer ขอ, kernel 7.0.0-31-generic, ผล: PASS 11  FAIL 0
+1. อ่านก่อน start            -> error: -61 (ENODATA)            PASS
+2. เขียน abc                 -> Invalid argument (EINVAL)        PASS
+   เขียน -5                  -> Invalid argument (EINVAL)        PASS
+   เขียน 99999999            -> No such process (ESRCH)          PASS
+3. start ซ้อน (4515 ขณะวัด 4514) -> Device or resource busy     PASS
+4. stop แล้วอ่านห่าง 3 วินาที -> 232 -> 232 (หยุดนับจริง)         PASS
+5. start ใหม่                -> ทันทีหลัง start ได้ 6 (รอบก่อน 232) PASS
+6. เฝ้า sleep ที่หลับอยู่ ขณะ yes 2 ตัวรันเต็ม CPU -> 0 / 0       PASS
+(ก) rmmod ขณะกำลังวัด โดยไม่ stop ก่อน -> ถอดได้ ไม่ oops        PASS
+(ข) insmod -> start -> stop -> rmmod 10 รอบ                     PASS
+    switch_out ต่อรอบ (1 วินาที): 40 214 59 293 234 55 51 48 55 32
+    (ค่าแกว่งเพราะ yes 2 ตัว + sleep แย่ง CPU กันบน 4 คอร์)
+dmesg ไม่มี oops / BUG / WARNING / Call Trace                    PASS
