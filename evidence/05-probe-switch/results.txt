@@ -1,0 +1,41 @@
+คนที่ 2: sched_switch probe (branch feat/probe-switch)
+environment: Ubuntu 26.04, kernel 7.0.0-31-generic, gcc 15.2.0, VM 4 CPU
+
+== build ==
+make ผ่าน ได้ sched_profiler.ko (ดู clone-and-build.png)
+warning 'struct folio' จาก include/linux/sched/numa_balancing.h
+แก้โดย include <linux/mm_types.h> ก่อน <trace/events/sched.h> (ดู build-after-warning-fix.png)
+
+== ทดสอบด้วยมือ (manual-test-dmesg.png) ==
+workload: yes > /dev/null  pid 8683
+วัดจริง 62.7 วินาที (dmesg: start 2924.180878, stop 2986.918200)
+switch_in:  1565
+switch_out: 1566   (ต่างจาก switch_in 1 เพราะตอนเริ่มวัด process กำลังรันอยู่บน CPU)
+/proc/<pid>/status ก่อน-หลัง: 2401 -> 6574 (delta 4173)
+หมายเหตุ: grep ก่อน/หลังห่างจาก start/stop หลายสิบวินาทีเพราะพิมพ์คำสั่งทีละบรรทัด
+จึงใช้เทียบไม่ได้ -> เปลี่ยนไปใช้สคริปต์ด้านล่าง
+insmod / rmmod ปกติ, dmesg: loaded / start pid / stop pid / unloaded
+
+== ทดสอบด้วยสคริปต์ check_switch.sh (check-script-result.png) ==
+workload: yes > /dev/null  pid 11858  วัด 5 วินาที
+switch_in:  231
+switch_out: 231
+/proc/<pid>/status delta (voluntary + nonvoluntary): 247
+ต่างกัน 16 ครั้ง (~6%): ช่วงเวลาของ /proc กว้างกว่าของ module
+(อ่าน /proc ก่อน start และหลัง stop, ระหว่าง tracepoint_synchronize_unregister()
+probe ถูกถอดแล้วแต่ /proc ยังนับ, และ awk/echo แย่ง CPU ช่วง start/stop)
+
+== สคริปต์ ==
+#!/bin/bash
+yes > /dev/null & PID=$!
+sleep 1
+b=$(awk '/ctxt/{s+=$2} END{print s}' /proc/$PID/status)
+echo $PID > /proc/sched_profiler
+sleep 5
+echo 0 > /proc/sched_profiler
+a=$(awk '/ctxt/{s+=$2} END{print s}' /proc/$PID/status)
+kill $PID
+echo "PID=$PID   /proc delta = $((a-b))"
+cat /proc/sched_profiler
+
+รันด้วย: sudo insmod sched_profiler.ko && sudo bash check_switch.sh && sudo rmmod sched_profiler
