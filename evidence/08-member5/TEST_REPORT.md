@@ -57,8 +57,8 @@ sudo bash ~/cpe333-evidence/run-validation.sh
 ## หลักฐานสำหรับรายงาน
 
 - [Build log](02-build.log) และ [ภาพ build](02-build.png)
-- [ผลทดสอบแบบข้อความ](run-xdr9RD/results.log) และ [ภาพผลจาก SSH ของผู้ทดสอบ](08-live-ssh-results.png)
+- [ผลทดสอบแบบข้อความ](run-xdr9RD/results.log)
 - ftrace ราย workload [CPU-bound](run-xdr9RD/cpu-bound/trace.txt) · [Sleep-heavy](run-xdr9RD/sleep-heavy/trace.txt) · [Migration](run-xdr9RD/migration/trace.txt)
 - [Kernel log เฉพาะช่วงทดสอบ](run-xdr9RD/dmesg-test-window.log)
 
-ภาพ build แสดงผลจาก build log บนหน้าคอนโซล VirtualBox. ภาพ SSH แสดงผลที่ออกตอนรันชุดทดสอบจริง.
+ภาพ build แสดงผลจาก build log บนหน้าคอนโซล VirtualBox.
