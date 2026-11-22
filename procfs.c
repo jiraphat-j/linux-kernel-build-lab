@@ -1,8 +1,13 @@
+#include <linux/errno.h>
+#include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
+#include <linux/string.h>
 #include <linux/uaccess.h>
 #include "sched_profiler.h"
+
+#define SP_WRITE_MAX_LEN 32
 
 static struct proc_dir_entry *ent;
 
@@ -15,6 +20,7 @@ static int sp_show(struct seq_file *m, void *v)
 		seq_printf(m, "error: %d\n", ret);
 		return 0;
 	}
+
 	seq_printf(m, "pid:        %d\n", sp_target_pid());
 	seq_printf(m, "switch_in:  %lu\n", s.switch_in);
 	seq_printf(m, "switch_out: %lu\n", s.switch_out);
@@ -31,18 +37,34 @@ static int sp_open(struct inode *inode, struct file *file)
 static ssize_t sp_write(struct file *file, const char __user *buf,
 			size_t count, loff_t *ppos)
 {
+	char kbuf[SP_WRITE_MAX_LEN + 1];
+	char *trimmed;
 	int pid, ret;
 
-	ret = kstrtoint_from_user(buf, count, 10, &pid);
+	if (count == 0 || count > SP_WRITE_MAX_LEN)
+		return -EINVAL;
+
+	if (copy_from_user(kbuf, buf, count))
+		return -EFAULT;
+
+	kbuf[count] = '\0';
+	trimmed = strim(kbuf);
+	if (*trimmed == '\0')
+		return -EINVAL;
+
+	ret = kstrtoint(trimmed, 10, &pid);
 	if (ret)
 		return ret;
+
 	if (pid == 0) {
 		sp_stop();
 		return count;
 	}
+
 	ret = sp_start(pid);
 	if (ret)
 		return ret;
+
 	return count;
 }
 
