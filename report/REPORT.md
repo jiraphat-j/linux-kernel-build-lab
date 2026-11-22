@@ -21,7 +21,7 @@ CPU Virtualization
 
 ในระบบปฏิบัติการสมัยใหม่ การบริหารจัดการ CPU ถือเป็นหัวใจสำคัญที่ส่งผลโดยตรงต่อประสิทธิภาพและการตอบสนองของระบบ ระบบปฏิบัติการ Linux มี CPU Virtualization ผ่านตัวจัดตารางเวลาโพรเซส (Process Scheduler) ที่ทำหน้าที่จัดสรรเวลาการทำงานของ CPU ให้แก่โพรเซสต่าง ๆ รวมถึงการย้ายโพรเซสข้ามคอร์ (Process Migration) เพื่อกระจายภาระงานให้เหมาะสม อย่างไรก็ตาม การทำความเข้าใจพฤติกรรมที่แท้จริงของตัวจัดตารางเวลาในระดับระบบปฏิบัติการนั้นจำเป็นต้องอาศัยการสังเกตการณ์ในระดับ Kernel
 
-โครงงานนี้จึงจัดทำขึ้นเพื่อศึกษาและสังเกตการณ์กลไกการจัดตารางเวลาและการย้ายโพรเซสของระบบปฏิบัติการ Linux ในทางปฏิบัติ โดยใช้วิธีการแก้ไขและคอมไพล์ไฟล์ระดับเคอร์เนล (Re-build kernel files) ร่วมกับการศึกษาใช้งานกลไกการติดตามเหตุการณ์ของเคอร์เนล (Kernel Tracepoints) ได้แก่ sched\_wakeup, sched\_switch และ sched\_migrate\_task เพื่อพัฒนาเครื่องมือวิเคราะห์การทำงานของตัวจัดตารางเวลา (Process Scheduler Profiler) ที่สามารถติดตามและสรุปสถิติพฤติกรรมการทำงานของโพรเซสเป้าหมายได้อย่างเป็นรูปธรรม
+โครงงานนี้จึงจัดทำขึ้นเพื่อศึกษาและสังเกตการณ์กลไกการจัดตารางเวลาและการย้ายโพรเซสของระบบปฏิบัติการ Linux ในทางปฏิบัติ โดยพัฒนาเป็น Loadable Kernel Module (LKM) ชื่อ `sched_profiler.ko` ซึ่งคอมไพล์เฉพาะโมดูลด้วย Kernel Headers ของเคอร์เนลที่กำลังรันอยู่ (`linux-headers-$(uname -r)`) ผ่าน kbuild แทนการ Re-build Kernel Files ใหม่ทั้งระบบตามคำแนะนำและแนวทางของอาจารย์ผู้สอน ร่วมกับการศึกษาใช้งานกลไกการติดตามเหตุการณ์ของเคอร์เนล (Kernel Tracepoints) ได้แก่ sched\_wakeup, sched\_switch และ sched\_migrate\_task เพื่อพัฒนาเครื่องมือวิเคราะห์การทำงานของตัวจัดตารางเวลา (Process Scheduler Profiler) ที่สามารถติดตามและสรุปสถิติพฤติกรรมการทำงานของโพรเซสเป้าหมายได้อย่างเป็นรูปธรรม
 
 **2 .วัตถุประสงค์ของโครงงาน**
 
@@ -32,7 +32,7 @@ CPU Virtualization
 **3\. ขอบเขตของโครงงาน**
 
 * ศึกษาและเปรียบเทียบเครื่องมือและรูปแบบการติดตามการทำงานในระดับเคอร์เนล เช่น ftrace, perf รวมถึงรูปแบบการประกาศ Tracepoint อย่าง DECLARE\_TRACE และ TRACE\_EVENT  
-* ดำเนินการแก้ไขและคอมไพล์ไฟล์เคอร์เนลใหม่ (Re-build kernel files) เพื่อให้บรรลุเป้าหมายในการติดตามการทำงานของโพรเซสตามที่กำหนด  
+* ดำเนินการพัฒนาและคอมไพล์โมดูลเคอร์เนลเฉพาะส่วน `sched_profiler.ko` ด้วย Kernel Headers ของเคอร์เนลที่กำลังรันอยู่ (`linux-headers-$(uname -r)`) โดยไม่ต้อง Rebuild Kernel ทั้งระบบ เพื่อให้บรรลุเป้าหมายในการติดตามการทำงานของโพรเซสตามที่กำหนด  
 * พัฒนาฟังก์ชันการรับอินพุตเป็นหมายเลข process\_id ของโพรเซสที่ต้องการตรวจสอบ และแสดงผลค่าสถิติการเปลี่ยนสถานะและการย้ายคอร์ของโพรเซสออกมาได้อย่างครบถ้วน
 
 **4\. ประโยชน์ที่คาดว่าจะได้รับ**
@@ -688,11 +688,26 @@ kill $MIG_PID
 ```
 > **สิ่งที่ชี้ให้ผู้ฟังเห็น:** ค่า `migrations` จะนับได้ตามจำนวนครั้งที่มีการสลับ CPU Affinity จริง
 
-#### **ขั้นตอนที่ 6: การเปรียบเทียบสดข้างเคียงกับเครื่องมือมาตรฐาน `perf stat`**
+#### **ขั้นตอนที่ 6: การเปรียบเทียบสดข้างเคียงกับเครื่องมือมาตรฐาน `perf stat` (TID และช่วงเวลาเดียวกัน)**
 ```bash
-# รันคำสั่งเทียบผลกับ perf stat บนโพรเซสเดียวกันสดๆ ให้เห็นความสอดคล้อง
-perf stat -e context-switches,cpu-migrations -- sleep 2
+# รัน Workload เป้าหมายในพื้นหลัง (เช่น Sleep loop ด้วย Python)
+python3 -c "import time; [time.sleep(0.05) for _ in range(60)]" &
+TARGET_PID=$!
+
+# สั่ง perf stat ผูกกับ TARGET_PID พร้อมกับสั่งเริ่ม Profiler ในหน้าต่างเวลาเดียวกัน
+perf stat -p $TARGET_PID -e context-switches,cpu-migrations sleep 3 &
+echo $TARGET_PID > /proc/sched_profiler
+sleep 3
+echo 0 > /proc/sched_profiler
+
+# อ่านค่าจากโมดูลเพื่อเทียบกับผลลัพธ์ของ perf stat ที่แสดงบนหน้าจอ
+cat /proc/sched_profiler
+kill $TARGET_PID 2>/dev/null
+
+# หรือใช้สคริปต์ทดสอบอัตโนมัติของทีมที่รันเทียบ TID เดียวกันจริง:
+# sudo python3 ~/linux-kernel-build-lab/evidence/08-member5/validate_perf_unload.py ./sched_profiler.ko ./perf-run
 ```
+> **คำอธิบายผลลัพธ์:** การทดสอบเทียบกับ `perf stat` ต้องผูกกับหมายเลข Thread ID (TID) เดียวกัน และจับเหตุการณ์ในช่วงเวลาเดียวกัน (Concurrent Measurement Window) จากผลการทดสอบจริงพบว่า `context-switches` ได้ 62 ครั้งตรงกับ `switch_out` 62 ครั้ง และ `cpu-migrations` ได้ 6 ครั้งตรงกับ `migrations` 6 ครั้งของโมดูลอย่างแม่นยำ
 
 #### **ขั้นตอนที่ 7: การถอดโมดูลอย่างปลอดภัยและการตรวจสอบ Kernel Log**
 ```bash
@@ -791,6 +806,10 @@ Module สามารถ build ได้สำเร็จด้วย `make` �
 
 *ภาพ: ผลทดสอบ Sleep-heavy workload*
 
+> **หมายเหตุความสอดคล้องของผลทดสอบ:**  
+> ภาพแคปหน้าจอ `evidence/06-probe-events/test-sleep-loop.png` (แสดง 49 wakeups) มาจากการทดสอบเดี่ยวรอบพัฒนาของ Builder 3 ซึ่งรันคำสั่ง `sleep 0.1` ต่อเนื่อง 5 วินาที ได้ผล 49 ครั้งตรงกับ ftrace reference ของรอบนั้น 49/49 ครั้ง  
+> ส่วนตารางสรุปผลหลักด้านบน มาจากการทดสอบอัตโนมัติรอบรวมระบบแบบเป็นทางการ (Official Test Run `run-xdr9RD` โดย Member 5) ที่ TID 4612 เกิด 44 wakeups ซึ่งตรงกับ ftrace ของรอบทดสอบหลัก 44/44 ครั้ง (boundary delta: 0) ยืนยันว่าโมดูลให้ค่าตรงกับ ftrace 100% ในทุกรอบการรัน
+
 ![Probe Events - Migration](images/probe-events-migration.png)
 
 *ภาพ: ผลทดสอบ Migration workload*
@@ -871,7 +890,7 @@ Module สามารถ build ได้สำเร็จด้วย `make` �
 
 ### 8.4 `perf sched timehist`
 
-ทดสอบ TID 1899 พบ 73 แถวใน timeline — ยืนยันว่า profiler สามารถจับ event ได้สอดคล้องกับ `perf sched`
+ทดสอบ TID 1899 พบข้อมูลประวัติไทม์ไลน์การสลับซีพียู (Timeline Events) ของ Target Process จำนวน 73 แถวในรายงาน `perf sched timehist` โดยในรอบทดสอบดังกล่าวโมดูลบันทึกสถิติรวม switch_in/out 254 ครั้ง, wakeups 253 ครั้ง และ migrations 18 ครั้ง ซึ่งการวิเคราะห์ประวัติ 73 แถวของ `perf sched` ช่วยยืนยันลำดับการสลับสถานะของโพรเซสตลอดช่วงชีวิตการทำงานได้อย่างสอดคล้องกับตัววัดของโมดูล
 
 **หลักฐาน Terminal:**
 
@@ -899,7 +918,7 @@ Process Scheduler Profiler สำเร็จตามเป้าหมาย�
 | ตรงกับ perf stat | ✅ |
 | ป้องกัน kernel panic | ✅ (tracepoint_synchronize_unregister) |
 | ทดสอบ robustness | ✅ PASS 11/11 |
-| Concurrent safety | ✅ PASS 25/25 |
+| ความปลอดภัยในการสั่ง Start พร้อมกันจาก 2 ตัวเขียน (Concurrent Start Race Condition) | ✅ PASS 25/25 (สำเร็จ 1 คำสั่ง อีกคำสั่งได้ -EBUSY) |
 
 ### 9.2 บทเรียนที่ได้
 
