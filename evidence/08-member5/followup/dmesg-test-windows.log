@@ -1,0 +1,67 @@
+=== perf stat and active unload ===
+[  240.554728] sched_profiler: loaded
+[  240.698140] sched_profiler: start pid 4146
+[  241.972548] sched_profiler: stop pid 4146
+[  247.757353] sched_profiler: start pid 4309
+[  247.989670] sched_profiler: stop pid 4309
+[  247.989680] sched_profiler: unloaded
+
+=== perf sched and concurrent starts ===
+[   30.144848] sched_profiler: loading out-of-tree module taints kernel.
+[   30.144863] sched_profiler: module verification failed: signature and/or required key missing - tainting kernel
+[   30.147393] sched_profiler: loaded
+[   30.162136] sched_profiler: start pid 1899
+[   32.322808] Scheduler tracepoints stat_sleep, stat_iowait, stat_blocked and stat_runtime require the kernel parameter schedstats=enable or kernel.sched_schedstats=1
+[   32.722590] Scheduler tracepoints stat_sleep, stat_iowait, stat_blocked and stat_runtime require the kernel parameter schedstats=enable or kernel.sched_schedstats=1
+[   35.726455] sched_profiler: stop pid 1899
+[   36.949378] sched_profiler: start pid 2028
+[   36.974812] sched_profiler: stop pid 2028
+[   36.984499] sched_profiler: start pid 2029
+[   37.010976] sched_profiler: stop pid 2029
+[   37.020678] sched_profiler: start pid 2029
+[   37.047516] sched_profiler: stop pid 2029
+[   37.058116] sched_profiler: start pid 2029
+[   37.085302] sched_profiler: stop pid 2029
+[   37.102500] sched_profiler: start pid 2029
+[   37.127309] sched_profiler: stop pid 2029
+[   37.136885] sched_profiler: start pid 2028
+[   37.158303] sched_profiler: stop pid 2028
+[   37.169265] sched_profiler: start pid 2029
+[   37.194413] sched_profiler: stop pid 2029
+[   37.203823] sched_profiler: start pid 2029
+[   37.237687] sched_profiler: stop pid 2029
+[   37.245246] sched_profiler: start pid 2029
+[   37.269287] sched_profiler: stop pid 2029
+[   37.281002] sched_profiler: start pid 2029
+[   37.316524] sched_profiler: stop pid 2029
+[   37.328200] sched_profiler: start pid 2028
+[   37.356467] sched_profiler: stop pid 2028
+[   37.363469] sched_profiler: start pid 2029
+[   37.387358] sched_profiler: stop pid 2029
+[   37.401408] sched_profiler: start pid 2029
+[   37.435512] sched_profiler: stop pid 2029
+[   37.445594] sched_profiler: start pid 2028
+[   37.472736] sched_profiler: stop pid 2028
+[   37.484065] sched_profiler: start pid 2029
+[   37.514290] sched_profiler: stop pid 2029
+[   37.524881] sched_profiler: start pid 2029
+[   37.551652] sched_profiler: stop pid 2029
+[   37.561015] sched_profiler: start pid 2029
+[   37.590363] sched_profiler: stop pid 2029
+[   37.601795] sched_profiler: start pid 2028
+[   37.626566] sched_profiler: stop pid 2028
+[   37.636074] sched_profiler: start pid 2029
+[   37.661785] sched_profiler: stop pid 2029
+[   37.673891] sched_profiler: start pid 2029
+[   37.698582] sched_profiler: stop pid 2029
+[   37.707417] sched_profiler: start pid 2028
+[   37.740452] sched_profiler: stop pid 2028
+[   37.750808] sched_profiler: start pid 2029
+[   37.773932] sched_profiler: stop pid 2029
+[   37.784268] sched_profiler: start pid 2028
+[   37.808880] sched_profiler: stop pid 2028
+[   37.820050] sched_profiler: start pid 2029
+[   37.847381] sched_profiler: stop pid 2029
+[   37.858491] sched_profiler: start pid 2029
+[   37.883381] sched_profiler: stop pid 2029
+[   37.896999] sched_profiler: unloaded

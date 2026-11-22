@@ -11,3 +11,5 @@
 กรณี migration นับได้ 7 ครั้งจากการตรึง CPU ครั้งแรก 1 ครั้งและสลับ CPU 6 ครั้ง. ทดสอบ input, start/stop และการสิ้นสุดของ target ผ่าน. โหลดและถอดรวม 11 รอบ โดยไม่พบ kernel fault ใหม่ในช่วงทดสอบ.
 
 ตรวจตัวเลขสำหรับสไลด์จาก [ผลทดสอบ](run-xdr9RD/results.log). รายละเอียดการเทียบ, raw logs, build warning และข้อจำกัดของผลหนึ่งรอบต่อ workload อยู่ใน [TEST_REPORT.md](TEST_REPORT.md).
+
+รอบเพิ่มเติม `perf stat` ตรงกับ module ที่ 62 context switches และ 6 migrations. `rmmod` ขณะกำลังวัดผ่านและ target ยังอยู่. `perf sched` แสดง 73 แถวของ target และการส่ง start พร้อมกันจากสองตัวเขียนผ่าน 25/25 รอบ. ดู [ผลทดสอบเพิ่มเติม](followup/results.json) และ [ภาพคอนโซลจริง](followup/terminal-live.png).

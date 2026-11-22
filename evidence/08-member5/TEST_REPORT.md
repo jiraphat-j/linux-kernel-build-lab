@@ -52,7 +52,7 @@ modinfo -F vermagic ./sched_profiler.ko
 sudo bash ~/cpe333-evidence/run-validation.sh
 ```
 
-สคริปต์ใช้ `taskset`, Python และ ftrace โดยตรง. รอบนี้มีหนึ่งรอบต่อ workload. การทดสอบไม่ได้รวม stress ของ concurrent procfs writers, unload ขณะ session ยัง active หรือการวัดแยกด้วย `perf`/`trace-cmd`.
+สคริปต์ใช้ `taskset`, Python และ ftrace โดยตรง. ตารางด้านบนมาจากหนึ่งรอบต่อ workload. ดูผลทดสอบ `perf` และ lifecycle รอบเพิ่มเติมด้านล่าง.
 
 ## หลักฐานสำหรับรายงาน
 
@@ -60,3 +60,27 @@ sudo bash ~/cpe333-evidence/run-validation.sh
 - [ผลทดสอบแบบข้อความ](run-xdr9RD/results.log) และ [ผลเทียบแบบ JSON](run-xdr9RD/comparison.json)
 - ftrace ราย workload [CPU-bound](run-xdr9RD/cpu-bound/trace.txt) · [Sleep-heavy](run-xdr9RD/sleep-heavy/trace.txt) · [Migration](run-xdr9RD/migration/trace.txt)
 - [Kernel log เฉพาะช่วงทดสอบ](run-xdr9RD/dmesg-test-window.log)
+
+## ผลรอบเพิ่มเติม
+
+ทดสอบ commit `45fd877` บน Ubuntu Server 26.04 ใน VirtualBox 2 vCPU, kernel `7.0.0-43-generic` และ `perf 7.0.14`. ผลด้านล่างมาจากการรันใหม่แยกจากตาราง ftrace ด้านบน.
+
+| การทดสอบ | ผลจริง |
+| --- | --- |
+| `perf stat` ต่อ TID `4146` | `context-switches` 62 ตรงกับ `switch_out` 62. `cpu-migrations` 6 ตรงกับ `migrations` 6 |
+| `rmmod` ขณะกำลังเฝ้า TID `4309` | ถอดสำเร็จ, `/proc/sched_profiler` หาย และ target ยังทำงาน |
+| `perf sched timehist` ต่อ TID `1899` | พบ 73 แถวใน timeline ของ target. การเทียบตัวนับใช้ `perf stat` และ ftrace |
+| ส่ง start พร้อมกันจากตัวเขียน 2 ตัว | ผ่าน 25/25 รอบ. ทุกรอบมีหนึ่งคำสั่งสำเร็จ อีกคำสั่งได้ `EBUSY` และ PID ที่แสดงตรงกับคำสั่งที่สำเร็จ |
+
+ทั้งสองชุดออกด้วยรหัส `0`. Kernel log ช่วงทดสอบไม่พบ fault หรือ warning ใหม่.
+
+เก็บ [ผลทดสอบแยกกรณี](followup/results.json), [perf stat CSV](followup/perf-stat.csv), [perf sched timehist](followup/perf-sched-timehist.log), [kernel log](followup/dmesg-test-windows.log) และ [ภาพคอนโซล VM ขณะรันจริง](followup/terminal-live.png).
+
+ทำซ้ำใน VM ที่มี `perf` ตรงกับ kernel โดยคัดลอกสคริปต์เพิ่มไปคู่กับ `validate_profiler.py` ใน `~/cpe333-evidence` ก่อนสลับไป build ที่ commit ที่ทดสอบ. ทั้งสองคำสั่งสร้างโฟลเดอร์ผลใหม่.
+
+```bash
+sudo python3 ~/cpe333-evidence/validate_perf_unload.py \
+  ./sched_profiler.ko ~/cpe333-evidence/perf-unload-run
+sudo python3 ~/cpe333-evidence/validate_perf_sched_writers.py \
+  ./sched_profiler.ko ~/cpe333-evidence/perf-sched-writers-run
+```
