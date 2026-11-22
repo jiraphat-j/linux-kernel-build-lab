@@ -1,0 +1,154 @@
+# tracer: nop
+#
+# entries-in-buffer/entries-written: 142/142   #P:2
+#
+#                                _-----=> irqs-off/BH-disabled
+#                               / _----=> need-resched
+#                              | / _---=> hardirq/softirq
+#                              || / _--=> preempt-depth
+#                              ||| / _-=> migrate-disable
+#                              |||| /     delay
+#           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION
+#              | |         |   |||||     |         |
+         python3-4600    [001] ...1.  1904.286292: tracing_mark_write: CPE333_OUTER_BEGIN
+         python3-4600    [001] ...1.  1904.288286: tracing_mark_write: CPE333_INNER_BEGIN
+          <idle>-0       [000] dNH2.  1904.288763: sched_wakeup: comm=taskset pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.288809: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=taskset next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.294352: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=R ==> next_comm=kworker/0:3 next_pid=654 next_prio=120
+     kworker/0:3-654     [000] d..2.  1904.294363: sched_switch: prev_comm=kworker/0:3 prev_pid=654 prev_prio=120 prev_state=I ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.296456: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=R ==> next_comm=kworker/0:3 next_pid=654 next_prio=120
+     kworker/0:3-654     [000] d..2.  1904.296465: sched_switch: prev_comm=kworker/0:3 prev_pid=654 prev_prio=120 prev_state=I ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.305483: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=R ==> next_comm=kworker/0:3 next_pid=654 next_prio=120
+     kworker/0:3-654     [000] d..2.  1904.305495: sched_switch: prev_comm=kworker/0:3 prev_pid=654 prev_prio=120 prev_state=I ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.312766: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.374902: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+     kworker/0:3-654     [000] d..2.  1904.375532: sched_switch: prev_comm=kworker/0:3 prev_pid=654 prev_prio=120 prev_state=I ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.375578: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.442624: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.442942: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.442988: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.523549: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+     kworker/0:3-654     [000] d..2.  1904.523811: sched_switch: prev_comm=kworker/0:3 prev_pid=654 prev_prio=120 prev_state=I ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.523852: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.565566: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.565712: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.565749: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.623012: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.623318: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.623379: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.666537: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.666627: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.666657: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.711718: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+     ksoftirqd/0-14      [000] d..2.  1904.712279: sched_switch: prev_comm=ksoftirqd/0 prev_pid=14 prev_prio=120 prev_state=S ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.712317: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=kworker/0:3 next_pid=654 next_prio=120
+          <idle>-0       [000] dNh4.  1904.756154: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.756321: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.756358: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.818812: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.818964: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.819000: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.867974: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+     ksoftirqd/0-14      [000] d..2.  1904.868408: sched_switch: prev_comm=ksoftirqd/0 prev_pid=14 prev_prio=120 prev_state=S ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.868444: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.912789: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.912949: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.912988: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1904.957723: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1904.957866: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1904.957903: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.008059: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.008209: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.008247: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.073030: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.073336: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.073379: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.114769: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.114927: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.114965: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.159879: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+    kworker/0:1H-485     [000] d..2.  1905.160084: sched_switch: prev_comm=kworker/0:1H prev_pid=485 prev_prio=100 prev_state=I ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.160119: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.204537: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.204695: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.204732: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.257774: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.257881: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.257913: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.315360: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.315511: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.315548: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.366442: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.366605: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.366675: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.420603: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.420878: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.420922: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.464916: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.465066: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.465103: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.506370: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.506511: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.506548: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.550855: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.551000: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.551036: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.591500: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.591649: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.591685: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.636922: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.637023: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.637055: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.685101: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.685241: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.685277: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.729437: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.729618: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.729655: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=kworker/0:3 next_pid=654 next_prio=120
+          <idle>-0       [000] dNh4.  1905.774301: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.774445: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.774482: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.817205: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.817369: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.817406: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.860047: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.860203: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.860239: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=kworker/0:3 next_pid=654 next_prio=120
+          <idle>-0       [000] dNh4.  1905.902166: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.902409: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.902444: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.952472: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.952628: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.952664: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1905.998962: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1905.999112: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1905.999148: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.044040: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.044187: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.044222: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.088705: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.088855: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.088893: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.133409: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.133565: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.133601: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.178264: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.178384: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.178417: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.223033: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.223179: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.223212: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.266175: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.266322: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.266364: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.307167: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.307249: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.307279: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+          <idle>-0       [000] dNh4.  1906.349080: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+          <idle>-0       [000] d..2.  1906.349217: sched_switch: prev_comm=swapper/0 prev_pid=0 prev_prio=120 prev_state=R ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.349252: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=S ==> next_comm=swapper/0 next_pid=0 next_prio=120
+         python3-4600    [000] d..4.  1906.355322: sched_wakeup: comm=python3 pid=4612 prio=120 target_cpu=000
+         python3-4600    [000] d..2.  1906.355329: sched_switch: prev_comm=python3 prev_pid=4600 prev_prio=120 prev_state=S ==> next_comm=python3 next_pid=4612 next_prio=120
+         python3-4612    [000] d..2.  1906.355343: sched_switch: prev_comm=python3 prev_pid=4612 prev_prio=120 prev_state=T ==> next_comm=python3 next_pid=4600 next_prio=120
+         python3-4600    [000] ...1.  1906.355590: tracing_mark_write: CPE333_INNER_END
+         python3-4600    [000] ...1.  1906.407551: tracing_mark_write: CPE333_OUTER_END

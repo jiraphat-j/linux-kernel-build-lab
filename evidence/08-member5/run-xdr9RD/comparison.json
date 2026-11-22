@@ -1,0 +1,71 @@
+[
+  {
+    "case": "cpu-bound",
+    "tid": 4609,
+    "module": {
+      "switch_in": 152,
+      "switch_out": 152,
+      "wakeups": 1,
+      "migrations": 2
+    },
+    "ftrace": {
+      "switch_in": 152,
+      "switch_out": 152,
+      "wakeups": 1,
+      "migrations": 2
+    },
+    "boundary_events": {
+      "switch_in": 0,
+      "switch_out": 0,
+      "wakeups": 0,
+      "migrations": 0
+    },
+    "pass": true
+  },
+  {
+    "case": "sleep-heavy",
+    "tid": 4612,
+    "module": {
+      "switch_in": 47,
+      "switch_out": 47,
+      "wakeups": 44,
+      "migrations": 0
+    },
+    "ftrace": {
+      "switch_in": 47,
+      "switch_out": 47,
+      "wakeups": 44,
+      "migrations": 0
+    },
+    "boundary_events": {
+      "switch_in": 0,
+      "switch_out": 0,
+      "wakeups": 0,
+      "migrations": 0
+    },
+    "pass": true
+  },
+  {
+    "case": "migration",
+    "tid": 4613,
+    "module": {
+      "switch_in": 61,
+      "switch_out": 61,
+      "wakeups": 55,
+      "migrations": 7
+    },
+    "ftrace": {
+      "switch_in": 61,
+      "switch_out": 61,
+      "wakeups": 55,
+      "migrations": 7
+    },
+    "boundary_events": {
+      "switch_in": 0,
+      "switch_out": 0,
+      "wakeups": 0,
+      "migrations": 0
+    },
+    "pass": true
+  }
+]

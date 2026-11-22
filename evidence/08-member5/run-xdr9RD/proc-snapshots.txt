@@ -1,0 +1,587 @@
+=== cpu-bound, TID 4609, /proc/<tid>/status, before ===
+Name:	taskset
+Umask:	0022
+State:	T (stopped)
+Tgid:	4609
+Ngid:	0
+Pid:	4609
+PPid:	4600
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0
+NStgid:	4609
+NSpid:	4609
+NSpgid:	4593
+NSsid:	4592
+Kthread:	0
+VmPeak:	     448 kB
+VmSize:	     448 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	     248 kB
+VmRSS:	     248 kB
+RssAnon:	      28 kB
+RssFile:	     220 kB
+RssShmem:	       0 kB
+VmData:	      24 kB
+VmStk:	     132 kB
+VmExe:	      12 kB
+VmLib:	     196 kB
+VmPTE:	      36 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	1/3512
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000000
+SigCgt:	0000000000000000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	3
+Cpus_allowed_list:	0-1
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	3
+nonvoluntary_ctxt_switches:	1
+x86_Thread_features:
+x86_Thread_features_locked:
+
+=== cpu-bound, TID 4609, /proc/<tid>/sched, before ===
+taskset (4609, #threads: 1)
+-------------------------------------------------------------------
+se.exec_start                                :       1898087.543417
+se.vruntime                                  :         24052.262067
+se.sum_exec_runtime                          :             3.533688
+se.nr_migrations                             :                    1
+nr_switches                                  :                    4
+nr_voluntary_switches                        :                    3
+nr_involuntary_switches                      :                    1
+se.load.weight                               :              1048576
+se.avg.load_sum                              :                44877
+se.avg.runnable_sum                          :             11883730
+se.avg.util_sum                              :             11787474
+se.avg.load_avg                              :                  976
+se.avg.runnable_avg                          :                  248
+se.avg.util_avg                              :                  248
+se.avg.last_update_time                      :        1898087542784
+se.avg.util_est                              :                  248
+uclamp.min                                   :                    0
+uclamp.max                                   :                 1024
+effective uclamp.min                         :                    0
+effective uclamp.max                         :                 1024
+policy                                       :                    0
+prio                                         :                  120
+se.slice                                     :              1400000
+ext.enabled                                  :                    0
+clock-delta                                  :                  140
+mm->numa_scan_seq                            :                    0
+numa_pages_migrated                          :                    0
+numa_preferred_nid                           :                   -1
+total_numa_faults                            :                    0
+current_node=0, numa_group_id=0
+numa_faults node=0 task_private=0 task_shared=0 group_private=0 group_shared=0
+
+=== cpu-bound, TID 4609, /proc/<tid>/status, after ===
+Name:	python3
+Umask:	0022
+State:	T (stopped)
+Tgid:	4609
+Ngid:	0
+Pid:	4609
+PPid:	4600
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0
+NStgid:	4609
+NSpid:	4609
+NSpgid:	4593
+NSsid:	4592
+Kthread:	0
+VmPeak:	   19048 kB
+VmSize:	   19048 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    9776 kB
+VmRSS:	    9776 kB
+RssAnon:	    3092 kB
+RssFile:	    6684 kB
+RssShmem:	       0 kB
+VmData:	    4980 kB
+VmStk:	     132 kB
+VmExe:	    3608 kB
+VmLib:	    2668 kB
+VmPTE:	      76 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	1/3512
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000001001000
+SigCgt:	0000000000000002
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	4
+nonvoluntary_ctxt_switches:	152
+x86_Thread_features:
+x86_Thread_features_locked:
+
+=== cpu-bound, TID 4609, /proc/<tid>/sched, after ===
+python3 (4609, #threads: 1)
+-------------------------------------------------------------------
+se.exec_start                                :       1900217.777295
+se.vruntime                                  :         25123.012521
+se.sum_exec_runtime                          :          1052.726435
+se.nr_migrations                             :                    3
+nr_switches                                  :                  156
+nr_voluntary_switches                        :                    4
+nr_involuntary_switches                      :                  152
+se.load.weight                               :              1048576
+se.avg.load_sum                              :                47625
+se.avg.runnable_sum                          :             48775547
+se.avg.util_sum                              :             24603021
+se.avg.load_avg                              :                 1023
+se.avg.runnable_avg                          :                 1024
+se.avg.util_avg                              :                  515
+se.avg.last_update_time                      :        1900217777152
+se.avg.util_est                              :                  515
+uclamp.min                                   :                    0
+uclamp.max                                   :                 1024
+effective uclamp.min                         :                    0
+effective uclamp.max                         :                 1024
+policy                                       :                    0
+prio                                         :                  120
+se.slice                                     :              1400000
+ext.enabled                                  :                    0
+clock-delta                                  :                  531
+mm->numa_scan_seq                            :                    0
+numa_pages_migrated                          :                    0
+numa_preferred_nid                           :                   -1
+total_numa_faults                            :                    0
+current_node=0, numa_group_id=0
+numa_faults node=0 task_private=0 task_shared=0 group_private=0 group_shared=0
+
+=== sleep-heavy, TID 4612, /proc/<tid>/status, before ===
+Name:	taskset
+Umask:	0022
+State:	T (stopped)
+Tgid:	4612
+Ngid:	0
+Pid:	4612
+PPid:	4600
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0
+NStgid:	4612
+NSpid:	4612
+NSpgid:	4593
+NSsid:	4592
+Kthread:	0
+VmPeak:	     448 kB
+VmSize:	     448 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	      80 kB
+VmRSS:	      80 kB
+RssAnon:	      16 kB
+RssFile:	      64 kB
+RssShmem:	       0 kB
+VmData:	      24 kB
+VmStk:	     132 kB
+VmExe:	      12 kB
+VmLib:	     196 kB
+VmPTE:	      36 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	1/3512
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000000
+SigCgt:	0000000000000000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	3
+Cpus_allowed_list:	0-1
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	1
+nonvoluntary_ctxt_switches:	1
+x86_Thread_features:
+x86_Thread_features_locked:
+
+=== sleep-heavy, TID 4612, /proc/<tid>/sched, before ===
+taskset (4612, #threads: 1)
+-------------------------------------------------------------------
+se.exec_start                                :       1900306.043755
+se.vruntime                                  :         25207.002689
+se.sum_exec_runtime                          :             1.056267
+se.nr_migrations                             :                    0
+nr_switches                                  :                    2
+nr_voluntary_switches                        :                    1
+nr_involuntary_switches                      :                    1
+se.load.weight                               :              1048576
+se.avg.load_sum                              :                46786
+se.avg.runnable_sum                          :             24662158
+se.avg.util_sum                              :             24192193
+se.avg.load_avg                              :                 1024
+se.avg.runnable_avg                          :                  527
+se.avg.util_avg                              :                  517
+se.avg.last_update_time                      :        1900306042880
+se.avg.util_est                              :                  517
+uclamp.min                                   :                    0
+uclamp.max                                   :                 1024
+effective uclamp.min                         :                    0
+effective uclamp.max                         :                 1024
+policy                                       :                    0
+prio                                         :                  120
+se.slice                                     :              1400000
+ext.enabled                                  :                    0
+clock-delta                                  :                   90
+mm->numa_scan_seq                            :                    0
+numa_pages_migrated                          :                    0
+numa_preferred_nid                           :                   -1
+total_numa_faults                            :                    0
+current_node=0, numa_group_id=0
+numa_faults node=0 task_private=0 task_shared=0 group_private=0 group_shared=0
+
+=== sleep-heavy, TID 4612, /proc/<tid>/status, after ===
+Name:	python3
+Umask:	0022
+State:	T (stopped)
+Tgid:	4612
+Ngid:	0
+Pid:	4612
+PPid:	4600
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0
+NStgid:	4612
+NSpid:	4612
+NSpgid:	4593
+NSsid:	4592
+Kthread:	0
+VmPeak:	   19048 kB
+VmSize:	   19048 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	   10032 kB
+VmRSS:	   10032 kB
+RssAnon:	    3092 kB
+RssFile:	    6940 kB
+RssShmem:	       0 kB
+VmData:	    4980 kB
+VmStk:	     132 kB
+VmExe:	    3608 kB
+VmLib:	    2668 kB
+VmPTE:	      76 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	1/3512
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000001001000
+SigCgt:	0000000000000002
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	45
+nonvoluntary_ctxt_switches:	4
+x86_Thread_features:
+x86_Thread_features_locked:
+
+=== sleep-heavy, TID 4612, /proc/<tid>/sched, after ===
+python3 (4612, #threads: 1)
+-------------------------------------------------------------------
+se.exec_start                                :       1902243.889556
+se.vruntime                                  :         25231.151632
+se.sum_exec_runtime                          :            25.158232
+se.nr_migrations                             :                    0
+nr_switches                                  :                   49
+nr_voluntary_switches                        :                   45
+nr_involuntary_switches                      :                    4
+se.load.weight                               :              1048576
+se.avg.load_sum                              :                  262
+se.avg.runnable_sum                          :               269671
+se.avg.util_sum                              :                71547
+se.avg.load_avg                              :                    5
+se.avg.runnable_avg                          :                    5
+se.avg.util_avg                              :                    1
+se.avg.last_update_time                      :        1902243889152
+se.avg.util_est                              :                    9
+uclamp.min                                   :                    0
+uclamp.max                                   :                 1024
+effective uclamp.min                         :                    0
+effective uclamp.max                         :                 1024
+policy                                       :                    0
+prio                                         :                  120
+se.slice                                     :              1400000
+ext.enabled                                  :                    0
+clock-delta                                  :                  140
+mm->numa_scan_seq                            :                    0
+numa_pages_migrated                          :                    0
+numa_preferred_nid                           :                   -1
+total_numa_faults                            :                    0
+current_node=0, numa_group_id=0
+numa_faults node=0 task_private=0 task_shared=0 group_private=0 group_shared=0
+
+=== migration, TID 4613, /proc/<tid>/status, before ===
+Name:	taskset
+Umask:	0022
+State:	T (stopped)
+Tgid:	4613
+Ngid:	0
+Pid:	4613
+PPid:	4600
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0
+NStgid:	4613
+NSpid:	4613
+NSpgid:	4593
+NSsid:	4592
+Kthread:	0
+VmPeak:	     448 kB
+VmSize:	     448 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	      88 kB
+VmRSS:	      88 kB
+RssAnon:	      24 kB
+RssFile:	      64 kB
+RssShmem:	       0 kB
+VmData:	      24 kB
+VmStk:	     132 kB
+VmExe:	      12 kB
+VmLib:	     196 kB
+VmPTE:	      40 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	1/3512
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000000000
+SigCgt:	0000000000000000
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	3
+Cpus_allowed_list:	0-1
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	1
+nonvoluntary_ctxt_switches:	0
+x86_Thread_features:
+x86_Thread_features_locked:
+
+=== migration, TID 4613, /proc/<tid>/sched, before ===
+taskset (4613, #threads: 1)
+-------------------------------------------------------------------
+se.exec_start                                :       1902343.111410
+se.vruntime                                  :        123630.702174
+se.sum_exec_runtime                          :             1.318415
+se.nr_migrations                             :                    0
+nr_switches                                  :                    1
+nr_voluntary_switches                        :                    1
+nr_involuntary_switches                      :                    0
+se.load.weight                               :              1048576
+se.avg.load_sum                              :                47502
+se.avg.runnable_sum                          :             23865285
+se.avg.util_sum                              :             23865285
+se.avg.load_avg                              :                 1024
+se.avg.runnable_avg                          :                  500
+se.avg.util_avg                              :                  500
+se.avg.last_update_time                      :        1902343110656
+se.avg.util_est                              :                  500
+uclamp.min                                   :                    0
+uclamp.max                                   :                 1024
+effective uclamp.min                         :                    0
+effective uclamp.max                         :                 1024
+policy                                       :                    0
+prio                                         :                  120
+se.slice                                     :              1400000
+ext.enabled                                  :                    0
+clock-delta                                  :                  110
+mm->numa_scan_seq                            :                    0
+numa_pages_migrated                          :                    0
+numa_preferred_nid                           :                   -1
+total_numa_faults                            :                    0
+current_node=0, numa_group_id=0
+numa_faults node=0 task_private=0 task_shared=0 group_private=0 group_shared=0
+
+=== migration, TID 4613, /proc/<tid>/status, after ===
+Name:	python3
+Umask:	0022
+State:	T (stopped)
+Tgid:	4613
+Ngid:	0
+Pid:	4613
+PPid:	4600
+TracerPid:	0
+Uid:	0	0	0	0
+Gid:	0	0	0	0
+FDSize:	64
+Groups:	0
+NStgid:	4613
+NSpid:	4613
+NSpgid:	4593
+NSsid:	4592
+Kthread:	0
+VmPeak:	   19048 kB
+VmSize:	   19048 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    9964 kB
+VmRSS:	    9964 kB
+RssAnon:	    3092 kB
+RssFile:	    6872 kB
+RssShmem:	       0 kB
+VmData:	    4980 kB
+VmStk:	     132 kB
+VmExe:	    3608 kB
+VmLib:	    2668 kB
+VmPTE:	      76 kB
+VmSwap:	       0 kB
+HugetlbPages:	       0 kB
+CoreDumping:	0
+THP_enabled:	1
+untag_mask:	0xffffffffffffffff
+Threads:	1
+SigQ:	1/3512
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000001001000
+SigCgt:	0000000000000002
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	not vulnerable
+SpeculationIndirectBranch:	always enabled
+Cpus_allowed:	1
+Cpus_allowed_list:	0
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	56
+nonvoluntary_ctxt_switches:	6
+x86_Thread_features:
+x86_Thread_features_locked:
+
+=== migration, TID 4613, /proc/<tid>/sched, after ===
+python3 (4613, #threads: 1)
+-------------------------------------------------------------------
+se.exec_start                                :       1903894.808062
+se.vruntime                                  :         25317.184687
+se.sum_exec_runtime                          :            27.976104
+se.nr_migrations                             :                    7
+nr_switches                                  :                   62
+nr_voluntary_switches                        :                   56
+nr_involuntary_switches                      :                    6
+se.load.weight                               :              1048576
+se.avg.load_sum                              :                 1033
+se.avg.runnable_sum                          :              1058704
+se.avg.util_sum                              :               259216
+se.avg.load_avg                              :                   19
+se.avg.runnable_avg                          :                   19
+se.avg.util_avg                              :                    3
+se.avg.last_update_time                      :        1903894807552
+se.avg.util_est                              :                    9
+uclamp.min                                   :                    0
+uclamp.max                                   :                 1024
+effective uclamp.min                         :                    0
+effective uclamp.max                         :                 1024
+policy                                       :                    0
+prio                                         :                  120
+se.slice                                     :              1400000
+ext.enabled                                  :                    0
+clock-delta                                  :                  140
+mm->numa_scan_seq                            :                    0
+numa_pages_migrated                          :                    0
+numa_preferred_nid                           :                   -1
+total_numa_faults                            :                    0
+current_node=0, numa_group_id=0
+numa_faults node=0 task_private=0 task_shared=0 group_private=0 group_shared=0
