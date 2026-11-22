@@ -13,8 +13,9 @@ static int __init sp_init(void)
 
 static void __exit sp_exit(void)
 {
-	sp_stop();
+	/* Drain procfs callbacks before the final stop. */
 	sp_procfs_exit();
+	sp_stop();
 	pr_info("sched_profiler: unloaded\n");
 }
 
