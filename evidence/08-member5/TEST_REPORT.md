@@ -28,7 +28,7 @@
 
 `taskset -pc` สลับ CPU สำเร็จ 6 ครั้ง. ftrace ยังจับการย้ายจาก CPU 1 ไป CPU 0 ตอน `taskset` ตรึง workload ครั้งแรกภายในช่วงวัด จึงได้ 7 events จากทั้ง module และ ftrace. เก็บทั้ง [ผล `taskset`](run-xdr9RD/migration/taskset.log) และ [raw trace](run-xdr9RD/migration/trace.txt).
 
-ตรวจประกอบจาก `/proc/<tid>/status` และ `/proc/<tid>/sched` รอบเดียวกัน. ผลต่าง `voluntary_ctxt_switches + nonvoluntary_ctxt_switches` และ `nr_switches` เท่ากับ 152, 47 และ 61 ตามลำดับ ตรงกับ switch-out. ผลต่าง `se.nr_migrations` เท่ากับ 2, 0 และ 7 ตรงกับ migration. สคริปต์บันทึก snapshots ก่อนและหลังไว้ใน VM ที่รันการทดสอบ.
+ตรวจประกอบจาก `/proc/<tid>/status` และ `/proc/<tid>/sched` รอบเดียวกัน. ผลต่าง `voluntary_ctxt_switches + nonvoluntary_ctxt_switches` และ `nr_switches` เท่ากับ 152, 47 และ 61 ตามลำดับ ตรงกับ switch-out. ผลต่าง `se.nr_migrations` เท่ากับ 2, 0 และ 7 ตรงกับ migration. ดู [ข้อมูล `/proc` ก่อนและหลังทั้งสาม workload](run-xdr9RD/proc-snapshots.txt).
 
 ## การควบคุมและถอด module
 
@@ -56,9 +56,9 @@ sudo bash ~/cpe333-evidence/run-validation.sh
 
 ## หลักฐานสำหรับรายงาน
 
-- [Build log](02-build.log) และ [ภาพ build](02-build.png)
-- [ผลทดสอบแบบข้อความ](run-xdr9RD/results.log)
+- [Build log](02-build.log)
+- [ผลทดสอบแบบข้อความ](run-xdr9RD/results.log) และ [ผลเทียบแบบ JSON](run-xdr9RD/comparison.json)
 - ftrace ราย workload [CPU-bound](run-xdr9RD/cpu-bound/trace.txt) · [Sleep-heavy](run-xdr9RD/sleep-heavy/trace.txt) · [Migration](run-xdr9RD/migration/trace.txt)
 - [Kernel log เฉพาะช่วงทดสอบ](run-xdr9RD/dmesg-test-window.log)
 
-ภาพ build แสดงผลจาก build log บนหน้าคอนโซล VirtualBox.
+[ภาพสรุปสำหรับรายงานและสไลด์](validation-results.png) สร้างจากค่าที่วัดและบันทึกไว้ในไฟล์ JSON ของรอบนี้.
