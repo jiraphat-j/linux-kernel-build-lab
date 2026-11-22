@@ -47,6 +47,9 @@ static ssize_t sp_write(struct file *file, const char __user *buf,
 	if (copy_from_user(kbuf, buf, count))
 		return -EFAULT;
 
+	if (memchr(kbuf, '\0', count))
+		return -EINVAL;
+
 	kbuf[count] = '\0';
 	trimmed = strim(kbuf);
 	if (*trimmed == '\0')
