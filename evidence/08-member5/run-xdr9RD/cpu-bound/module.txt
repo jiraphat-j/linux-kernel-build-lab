@@ -1,5 +1,0 @@
-pid:        0
-switch_in:  152
-switch_out: 152
-wakeups:    1
-migrations: 2

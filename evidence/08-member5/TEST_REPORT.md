@@ -28,24 +28,25 @@
 
 `taskset -pc` สลับ CPU สำเร็จ 6 ครั้ง. ftrace ยังจับการย้ายจาก CPU 1 ไป CPU 0 ตอน `taskset` ตรึง workload ครั้งแรกภายในช่วงวัด จึงได้ 7 events จากทั้ง module และ ftrace. เก็บทั้ง [ผล `taskset`](run-xdr9RD/migration/taskset.log) และ [raw trace](run-xdr9RD/migration/trace.txt).
 
-ตรวจประกอบจาก `/proc/<tid>/status` และ `/proc/<tid>/sched` รอบเดียวกัน. ผลต่าง `voluntary_ctxt_switches + nonvoluntary_ctxt_switches` และ `nr_switches` เท่ากับ 152, 47 และ 61 ตามลำดับ ตรงกับ switch-out. ผลต่าง `se.nr_migrations` เท่ากับ 2, 0 และ 7 ตรงกับ migration. เก็บ snapshots ก่อนและหลังในแต่ละโฟลเดอร์ workload เพื่อให้ตรวจซ้ำได้.
+ตรวจประกอบจาก `/proc/<tid>/status` และ `/proc/<tid>/sched` รอบเดียวกัน. ผลต่าง `voluntary_ctxt_switches + nonvoluntary_ctxt_switches` และ `nr_switches` เท่ากับ 152, 47 และ 61 ตามลำดับ ตรงกับ switch-out. ผลต่าง `se.nr_migrations` เท่ากับ 2, 0 และ 7 ตรงกับ migration. สคริปต์บันทึก snapshots ก่อนและหลังไว้ใน VM ที่รันการทดสอบ.
 
 ## การควบคุมและถอด module
 
 - อ่านก่อน start ได้ `error: -61`. Input ที่ไม่ใช่ตัวเลขและ PID ติดลบคืน `EINVAL`. PID ที่ไม่พบคืน `ESRCH` และ start ซ้อนคืน `EBUSY`.
 - เริ่มและหยุดด้วยข้อความที่มีช่องว่างได้. อ่านผลได้หลัง target สิ้นสุด และหลัง stop ค่า PID เป็น `0` พร้อมคงยอดตัวนับไว้. Workload ถัดไปแต่ละชุดให้ผลตรงกับ ftrace ของ session ใหม่.
 - ถอด module หลังทดสอบ และทดสอบ load/unload เพิ่มอีก 10 รอบ. `/proc/sched_profiler` หายหลังจบ. สคริปต์ออกด้วยรหัส `0`.
-- Kernel log ช่วงทดสอบมีข้อความ taint จาก out-of-tree และ module ที่ไม่มีลายเซ็น. ไม่พบ `BUG`, `Oops`, `WARNING`, `Call Trace` หรือ panic ใหม่ในช่วงนี้. Baseline มี watchdog soft lockup ก่อนโหลด module จึงเก็บแยกไว้ใน [watchdog baseline excerpt](run-xdr9RD/dmesg-before-watchdog.log).
+- Kernel log ช่วงทดสอบมีข้อความ taint จาก out-of-tree และ module ที่ไม่มีลายเซ็น. ไม่พบ `BUG`, `Oops`, `WARNING`, `Call Trace` หรือ panic ใหม่ในช่วงนี้. Baseline มี watchdog soft lockup ก่อนโหลด module.
 
 ## วิธีทำซ้ำใน Linux VM
 
-ใช้ headers ที่ตรงกับ `uname -r` และสร้าง snapshot ก่อนทดสอบ. ใช้ copy ของ `validate_profiler.py` และ `run-validation.sh` จากโฟลเดอร์หลักฐาน หลัง checkout ให้คัดลอกทั้งสองไฟล์จาก `evidence/08-member5/` ไปไว้ใน `~/cpe333-evidence`.
+ใช้ headers ที่ตรงกับ `uname -r` และสร้าง snapshot ก่อนทดสอบ. รันจาก checkout ที่มีโฟลเดอร์ `evidence/08-member5` เพื่อคัดลอกสคริปต์ก่อนสลับไปยัง commit ที่วัดจริง.
 
 ```bash
 sudo apt install build-essential pahole
 cd ~/linux-kernel-build-lab
-git switch --detach 45fd877
 mkdir -p ~/cpe333-evidence
+cp evidence/08-member5/{validate_profiler.py,run-validation.sh} ~/cpe333-evidence/
+git switch --detach 45fd877
 (set -o pipefail; make 2>&1 | tee ~/cpe333-evidence/02-build.log)
 modinfo -F vermagic ./sched_profiler.ko
 sudo bash ~/cpe333-evidence/run-validation.sh
@@ -57,7 +58,7 @@ sudo bash ~/cpe333-evidence/run-validation.sh
 
 - [Build log](02-build.log) และ [ภาพ build](02-build.png)
 - [ผลทดสอบแบบข้อความ](run-xdr9RD/results.log) และ [ภาพผลจาก SSH ของผู้ทดสอบ](08-live-ssh-results.png)
-- [CPU-bound](04-cpu-bound.png), [Sleep-heavy](05-sleep-heavy.png), [Migration](06-migration.png), [Unload](07-unload.png)
+- ftrace ราย workload [CPU-bound](run-xdr9RD/cpu-bound/trace.txt) · [Sleep-heavy](run-xdr9RD/sleep-heavy/trace.txt) · [Migration](run-xdr9RD/migration/trace.txt)
 - [Kernel log เฉพาะช่วงทดสอบ](run-xdr9RD/dmesg-test-window.log)
 
-ภาพแยกกรณีมาจากหน้าคอนโซล VirtualBox ที่แสดงข้อมูลจาก log และผลวัดที่เก็บไว้หลังการรัน. ภาพ SSH แสดงผลที่ออกตอนรันชุดทดสอบจริง.
+ภาพ build แสดงผลจาก build log บนหน้าคอนโซล VirtualBox. ภาพ SSH แสดงผลที่ออกตอนรันชุดทดสอบจริง.
