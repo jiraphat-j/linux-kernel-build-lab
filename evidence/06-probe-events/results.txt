@@ -1,0 +1,19 @@
+Probe events (sched_wakeup, sched_migrate_task) - test results
+Kernel: 7.0.0-30-generic (VirtualBox VM, Ubuntu 26.04)
+Branch: feat/probe-events (from mini2)
+
+1) sleep loop (python3, sleep 0.1, 5 s)
+   switch_in 49, switch_out 49, wakeups 49, migrations 0
+   reference (ftrace): wakeups 49  -> match
+2) forced migration (taskset -cp alternating CPU 0/1, 6 times)
+   switch_in 30, switch_out 30, wakeups 30, migrations 6
+   -> migrations counted correctly
+3) CPU-bound (yes, 5 s)
+   switch_in 116, switch_out 116, wakeups 0, migrations 1
+4) pinned to CPU 0 (taskset -c 0 yes, 5 s)
+   switch_in 87, switch_out 87, wakeups 0, migrations 0
+5) robustness_test.sh (from evidence/05-probe-switch)
+   PASS 11 FAIL 0, dmesg has no oops/BUG/WARNING
+
+Note: migrations in the sleep loop depends on the scheduler (reference run had 10,
+ours 0); the forced-migration test shows the probe itself works.

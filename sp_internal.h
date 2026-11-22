@@ -25,6 +25,7 @@ void sp_probe_sched_switch(void *data, bool preempt,
 			   struct task_struct *next,
 			   unsigned int prev_state);
 
-/* probe ของคนที่ 3 (sched_wakeup, sched_migrate_task) ประกาศเพิ่มตรงนี้ */
-
+/* probe_events.c (คนที่ 3) */
+void sp_probe_sched_wakeup(void *data, struct task_struct *p);
+void sp_probe_sched_migrate_task(void *data, struct task_struct *p, int dest_cpu);
 #endif

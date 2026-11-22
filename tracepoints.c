@@ -37,7 +37,8 @@ struct sp_probe {
 
 static struct sp_probe sp_probes[] = {
 	{ .name = "sched_switch", .func = sp_probe_sched_switch },	/* คนที่ 2 */
-	/* คนที่ 3: เพิ่ม { .name = "sched_wakeup", ... } และ sched_migrate_task ตรงนี้ */
+	{ .name = "sched_wakeup",       .func = sp_probe_sched_wakeup },	/* คนที่ 3 */
+	{ .name = "sched_migrate_task", .func = sp_probe_sched_migrate_task },	/* คนที่ 3 */
 };
 
 static void sp_match_tp(struct tracepoint *tp, void *priv)

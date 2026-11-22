@@ -1,0 +1,52 @@
+7.0.0-30-generic
+== 1. อ่านก่อน start ต้องได้ ENODATA (-61)
+error: -61
+PASS: read before start
+== 2. input ผิด
+abc      -> evidence/05-probe-switch/robustness_test.sh: line 12: echo: write error: Invalid argument
+PASS: abc -> EINVAL
+-5       -> evidence/05-probe-switch/robustness_test.sh: line 12: echo: write error: Invalid argument
+PASS: -5 -> EINVAL
+99999999 -> evidence/05-probe-switch/robustness_test.sh: line 12: echo: write error: No such process
+PASS: 99999999 -> ESRCH
+== 3. start ซ้อน ต้องได้ EBUSY
+start 8058 ขณะวัด 8057 -> evidence/05-probe-switch/robustness_test.sh: line 12: echo: write error: Device or resource busy
+PASS: double start -> EBUSY
+== 4. stop แล้วต้องหยุดนับ
+switch_out หลัง stop: 305 -> (3 วินาที) -> 305
+PASS: stop freezes counters
+== 5. start ใหม่ ตัวนับต้องเริ่มจาก 0
+รอบก่อน 305, ทันทีหลัง start ใหม่ 2
+PASS: counters reset on start
+== 6. ไม่นับ PID อื่น (เฝ้า sleep ที่หลับอยู่ ขณะ yes 2 ตัวรันเต็ม CPU)
+pid:        0
+switch_in:  0
+switch_out: 0
+wakeups:    0
+migrations: 0
+PASS: only target pid counted
+== (ก) rmmod ขณะกำลังวัด (ไม่ stop ก่อน)
+PASS: rmmod while measuring
+== (ข) insmod -> start -> stop -> rmmod 10 รอบ
+  รอบ 1: switch_out=3
+  รอบ 2: switch_out=6
+  รอบ 3: switch_out=1
+  รอบ 4: switch_out=2
+  รอบ 5: switch_out=3
+  รอบ 6: switch_out=4
+  รอบ 7: switch_out=17
+  รอบ 8: switch_out=11
+  รอบ 9: switch_out=1
+  รอบ 10: switch_out=8
+PASS: 10 load/unload cycles
+== dmesg ระหว่างทดสอบ
+[ 4112.267260] sched_profiler: loaded
+[ 4112.275203] sched_profiler: start pid 8057
+[ 4113.313224] sched_profiler: stop pid 8057
+[ 4113.321220] sched_profiler: unloaded
+[ 4113.365791] sched_profiler: loaded
+[ 4113.374327] sched_profiler: start pid 8057
+[ 4128.126301] sched_profiler: stop pid 8057
+[ 4128.174965] sched_profiler: unloaded
+PASS: dmesg clean (no oops/BUG/WARNING)
+== สรุป: PASS 11  FAIL 0
