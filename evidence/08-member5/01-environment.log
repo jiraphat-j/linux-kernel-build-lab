@@ -1,0 +1,7 @@
+[CPE333] Test VM environment
+cpe333-vm
+oracle
+7.0.0-43-generic
+2
+lrwxrwxrwx 1 root root 39 Oct 23 11:56 /lib/modules/7.0.0-43-generic/build -> /usr/src/linux-headers-7.0.0-43-generic
+45fd877 Merge pull request #10: harden scheduler profiler procfs

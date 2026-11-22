@@ -1,0 +1,32 @@
+[ 1896.923412] sched_profiler: loading out-of-tree module taints kernel.
+[ 1896.923426] sched_profiler: module verification failed: signature and/or required key missing - tainting kernel
+[ 1896.926613] sched_profiler: loaded
+[ 1896.956854] sched_profiler: start pid 4606
+[ 1897.948058] sched_profiler: stop pid 4606
+[ 1898.111511] sched_profiler: start pid 4609
+[ 1900.240155] sched_profiler: stop pid 4609
+[ 1900.335746] sched_profiler: start pid 4612
+[ 1902.291860] sched_profiler: stop pid 4612
+[ 1902.438917] sched_profiler: start pid 4613
+[ 1903.927849] sched_profiler: stop pid 4613
+[ 1904.016802] sched_profiler: unloaded
+[ 1904.055971] sched_profiler: loaded
+[ 1904.065127] sched_profiler: unloaded
+[ 1904.097023] sched_profiler: loaded
+[ 1904.107236] sched_profiler: unloaded
+[ 1904.127475] sched_profiler: loaded
+[ 1904.138300] sched_profiler: unloaded
+[ 1904.160005] sched_profiler: loaded
+[ 1904.171704] sched_profiler: unloaded
+[ 1904.199642] sched_profiler: loaded
+[ 1904.209229] sched_profiler: unloaded
+[ 1904.229450] sched_profiler: loaded
+[ 1904.237111] sched_profiler: unloaded
+[ 1904.272696] sched_profiler: loaded
+[ 1904.282214] sched_profiler: unloaded
+[ 1904.307712] sched_profiler: loaded
+[ 1904.315785] sched_profiler: unloaded
+[ 1904.349750] sched_profiler: loaded
+[ 1904.356930] sched_profiler: unloaded
+[ 1904.378196] sched_profiler: loaded
+[ 1904.389476] sched_profiler: unloaded

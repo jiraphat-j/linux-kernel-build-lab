@@ -1,0 +1,27 @@
+PASS: at least two usable CPUs
+PASS: profiler was unloaded at start
+7.0.0-43-generic
+7.0.0-43-generic SMP preempt mod_unload modversions
+PASS: read before first start
+PASS: 'abc': EINVAL
+PASS: '-5': EINVAL
+PASS: '99999999': ESRCH
+PASS: 4606: EBUSY
+PASS: read after target exit
+PASS: stop retains frozen totals
+PASS: cpu-bound: no trace buffer loss
+PASS: cpu-bound: trace marker order
+{"case": "cpu-bound", "tid": 4609, "module": {"switch_in": 152, "switch_out": 152, "wakeups": 1, "migrations": 2}, "ftrace": {"switch_in": 152, "switch_out": 152, "wakeups": 1, "migrations": 2}, "boundary_events": {"switch_in": 0, "switch_out": 0, "wakeups": 0, "migrations": 0}, "pass": true}
+PASS: cpu-bound: workload coverage and counter comparison
+PASS: sleep-heavy: no trace buffer loss
+PASS: sleep-heavy: trace marker order
+{"case": "sleep-heavy", "tid": 4612, "module": {"switch_in": 47, "switch_out": 47, "wakeups": 44, "migrations": 0}, "ftrace": {"switch_in": 47, "switch_out": 47, "wakeups": 44, "migrations": 0}, "boundary_events": {"switch_in": 0, "switch_out": 0, "wakeups": 0, "migrations": 0}, "pass": true}
+PASS: sleep-heavy: workload coverage and counter comparison
+PASS: migration: no trace buffer loss
+PASS: migration: trace marker order
+{"case": "migration", "tid": 4613, "module": {"switch_in": 61, "switch_out": 61, "wakeups": 55, "migrations": 7}, "ftrace": {"switch_in": 61, "switch_out": 61, "wakeups": 55, "migrations": 7}, "boundary_events": {"switch_in": 0, "switch_out": 0, "wakeups": 0, "migrations": 0}, "pass": true}
+PASS: migration: workload coverage and counter comparison
+PASS: proc entry removed after unload
+PASS: 10 additional load/unload cycles
+PASS: kernel log comparison window available
+PASS: no new kernel fault or warning during tests

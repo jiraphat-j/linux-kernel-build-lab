@@ -1,0 +1,20 @@
+cpu0
+entries: 92
+overrun: 0
+commit overrun: 0
+bytes: 5428
+oldest event ts:  1906.565406
+now ts:  1908.165891
+dropped events: 0
+read events: 0
+
+cpu1
+entries: 96
+overrun: 0
+commit overrun: 0
+bytes: 5608
+oldest event ts:  1906.567012
+now ts:  1908.165927
+dropped events: 0
+read events: 0
+
