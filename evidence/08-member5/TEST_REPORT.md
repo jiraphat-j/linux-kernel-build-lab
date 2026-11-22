@@ -60,5 +60,3 @@ sudo bash ~/cpe333-evidence/run-validation.sh
 - [ผลทดสอบแบบข้อความ](run-xdr9RD/results.log) และ [ผลเทียบแบบ JSON](run-xdr9RD/comparison.json)
 - ftrace ราย workload [CPU-bound](run-xdr9RD/cpu-bound/trace.txt) · [Sleep-heavy](run-xdr9RD/sleep-heavy/trace.txt) · [Migration](run-xdr9RD/migration/trace.txt)
 - [Kernel log เฉพาะช่วงทดสอบ](run-xdr9RD/dmesg-test-window.log)
-
-[ภาพสรุปสำหรับรายงานและสไลด์](validation-results.png) สร้างจากค่าที่วัดและบันทึกไว้ในไฟล์ JSON ของรอบนี้.
