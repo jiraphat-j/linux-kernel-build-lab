@@ -1,0 +1,46 @@
+=== 1. Check /proc entry ===
+-rw-rw-rw- 1 root root 0 Nov 22 03:52 /proc/sched_profiler
+
+=== 2. Read before start (Expect: error: -61 / ENODATA) ===
+error: -61
+
+=== 3. Invalid input: whitespace-only (Expect: -EINVAL) ===
+Exit code: 1
+
+=== 4. Invalid input: > 32 bytes (Expect: -EINVAL) ===
+Exit code: 1
+
+=== 5. Invalid input: non-numeric & negative (Expect: -EINVAL) ===
+Exit code: 1
+Exit code: 1
+
+=== 6. Non-existent PID (Expect: -ESRCH) ===
+Exit code: 1
+
+=== 7. Valid PID with leading/trailing spaces (Expect: Success) ===
+Started PID 6917 with spaces
+pid:        6917
+switch_in:  0
+switch_out: 0
+wakeups:    0
+migrations: 0
+
+=== 8. Start while busy (Expect: -EBUSY) ===
+Exit code: 1
+
+=== 9. Stop with spaces & read retained stats (Expect: pid: 0) ===
+Stopped
+pid:        0
+switch_in:  0
+switch_out: 0
+wakeups:    0
+migrations: 0
+
+=== 10. Short-lived process exits during profiling ===
+Started BG_PID 7342
+pid:        7342
+switch_in:  5
+switch_out: 6
+wakeups:    0
+migrations: 0
+Stopped BG_PID
